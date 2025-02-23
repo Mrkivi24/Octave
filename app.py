@@ -4,7 +4,6 @@ from datetime import datetime
 import bcrypt
 import time
 import atexit
-from apscheduler.schedulers.background import BackgroundScheduler
 import signal
 
 app = Flask(__name__)
