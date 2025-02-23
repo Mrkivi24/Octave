@@ -22,9 +22,6 @@ def query_db(query, args=(), one=False):
         conn.commit()
         return (rv[0] if rv else None) if one else rv
     
-@app.route('/')
-def home():
-    return render_template('login.html')
 
 @app.route('/info')
 def info():
