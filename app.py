@@ -275,28 +275,6 @@ def get_logged_in_username():
             return user[0]
     return None
 
-
-# --------------------------------------------
-# DELETE OLD CHATS
-# --------------------------------------------
-def delete_old_chats_job():
-    query_db("DELETE FROM chats WHERE timestamp < datetime('now', '-1 day')")
-    print("Old chats deleted.")
-
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=delete_old_chats_job, trigger="interval", hours=24)
-scheduler.start()
-
-# Shutdown the scheduler when exiting the app
-def shutdown_scheduler(signal, frame):
-    scheduler.shutdown()
-    print("Scheduler stopped.")
-
-signal.signal(signal.SIGINT, shutdown_scheduler)
-signal.signal(signal.SIGTERM, shutdown_scheduler)
-
-atexit.register(lambda: scheduler.shutdown())
-
 # --------------------------------------------
 # UNMUTE FUNCTION
 # --------------------------------------------
