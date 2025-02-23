@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ forum[1] }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <p style="text-align: right; margin-right: 30px; font-size: large;">You are logged in as: <strong>{{ session['username'] }}</strong></p>
+    <h1>{{ forum[1] }}</h1>
+    <p><strong>By {{ forum[3] }} on {{ forum[4] }}</strong></p>
+    <p>{{ forum[2] }}</p>
+
+    <hr>
+
+    <h2>Comments</h2>
+    <div class="comments-section">
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment[0] }}</strong> ({{ comment[2] }})</p>
+                <p>{{ comment[1] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="POST">
+        <textarea name="comment" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+
+    <a href="/forum">Back to Forum</a>
+</body>
+</html>

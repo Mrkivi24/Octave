@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/logout">Logout</a>
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/forum">Forum</a>
+    <p style="text-align: right; margin-right: 30px; font-size: large;">You are logged in as: <strong>{{ session['username'] }}</strong></p>
+
+    <h1 style="white-space: pre; font-family: monospace; font-size: 25px; color: #AD49E1; text-align: center;">
+                      __                       
+        ____   _____/  |______ ___  __ ____  
+       /  _ \_/ ___\   __\__  \\  \/ // __ \ 
+      (  <_> )  \___|  |  / __ \\   /\  ___/ 
+       \____/ \___  >__| (____  /\_/  \___  >
+                  \/          \/          \/ 
+    </h1>
+
+    <div class="main-container">
+        <!-- Online Users Section -->
+        <div class="online-users">
+            <h3>Online Users</h3>
+            <ul>
+                {% for user in online_users %}
+                    <li class="user-item">
+                        <span class="user-name">{{ user[0] }}</span>
+                        <div class="context-menu">
+                            <!-- Direct Message Form -->
+                            <form method="GET" action="{{ url_for('direct_message_page', username=user[0]) }}">
+                                <button type="submit">Direct Message</button>
+                            </form>
+                            
+                            <!-- Mute User Form -->
+                            <form method="POST" action="/mute_user">
+                                <input type="hidden" name="username" value="{{ user[0] }}">
+                                <button type="submit">Mute User</button>
+                            </form>
+                            
+                            <!-- Unmute User Form -->
+                            <form method="POST" action="/unmute_user">
+                                <input type="hidden" name="username" value="{{ user[0] }}">
+                                <button type="submit">Unmute User</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Chat Box Section -->
+        <div class="chat-box">
+            <h3>Messages</h3>
+            <div>
+                {% for msg in messages %}
+                    <p><strong>{{ msg[0] }}:</strong> {{ msg[1] }}</p>
+                {% endfor %}
+            </div>
+            <form method="POST">
+                <textarea name="message" placeholder="Type your message here..." required></textarea> <br>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

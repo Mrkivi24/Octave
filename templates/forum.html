@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .forum-post {
+            flex-grow: 3;
+    max-width: 75%;
+    border: 1px solid #9747FF;
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: 25px;
+    background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/chatroom">Back to Chatroom</a>
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/logout">Logout</a>
+    <p style="text-align: right; margin-right: 30px; font-size: large;">You are logged in as: <strong>{{ session['username'] }}</strong></p>
+
+    <h1 style="white-space: pre; font-family: monospace; font-size: 23px; color: #AD49E1; text-align: center;">
+        ███████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ███╗███████╗
+        ██╔════╝██╔═══██╗██╔══██╗██║   ██║████╗ ████║██╔════╝
+        █████╗  ██║   ██║██████╔╝██║   ██║██╔████╔██║███████╗
+        ██╔══╝  ██║   ██║██╔══██╗██║   ██║██║╚██╔╝██║╚════██║
+        ██║     ╚██████╔╝██║  ██║╚██████╔╝██║ ╚═╝ ██║███████║
+        ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+                                                             
+        </h1>
+    <div class="forum-post">
+        <h3>Create a Forum Post</h3>
+        <form method="POST">
+            <input type="text" name="title" placeholder="Forum Title" required>
+            <textarea name="content" placeholder="Your content here..." required></textarea> <br>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <div>
+        <h3>Forum Posts</h3>
+        {% for forum in forums %}
+            <div class="forum-post">
+                <h4>{{ forum[2] }} <small>by {{ forum[1] }} on {{ forum[4] }}</small></h4>
+                <p>{{ forum[3] }}</p>
+                <a href="/forum/{{ forum[0] }}">View Comments</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

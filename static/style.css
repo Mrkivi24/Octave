@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #000;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h3 {
+    color: #AD49E1;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+textarea, input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 4px;
+    background-color: #2b2b2b;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #AD49E1;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9747FF;
+}
+
+/* Layout Container */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1700px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 25px;
+}
+
+/* Online Users Section */
+.online-users {
+    flex: 1;
+    max-width: 25%;
+    border: 1px solid #AD49E1;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #1a1a1a;
+}
+
+.online-users ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.online-users li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #2b2b2b;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.online-users li:hover {
+    background-color: #333;
+}
+
+/* Chat Box Section */
+.chat-box {
+    flex: 3;
+    border: 1px solid #9747FF;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #1a1a1a;
+}
+
+/* Context Menu */
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #2b2b2b;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.context-menu button {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+    padding: 5px;
+    background-color: #9747FF;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.context-menu button:hover {
+    background-color: #b680fc;
+}
+
+.user-item:hover .context-menu {
+    display: block;
+    position: relative;
+}

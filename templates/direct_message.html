@@ -1,0 +1,31 @@
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Message with {{ recipient }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/logout">Logout</a>
+    <a style="text-align: right; margin-right: 30px; font-size: large;" href="/chatroom">chatroom</a>
+    <p style="text-align: right; margin-right: 30px; font-size: large;">You are logged in as: <strong>{{ session['username'] }}</strong></p>
+
+    <h1>Chat with {{ recipient }}</h1>
+
+    <div class="chat-box">
+        <object data="/dm_stream/{{ recipient }}" style="width: 100%; height: 300px; border: none;"></object>
+    </div>
+
+    <form method="POST">
+        <textarea name="message" placeholder="Type your message here..." required></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <a href="/chatroom">Back to Chatroom</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>
