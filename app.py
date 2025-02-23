@@ -11,6 +11,9 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 DB_PATH = 'database/chatroom.db'
 
+@app.route('/')
+def home():
+    return render_template('login.html')
 
 # Helper function to interact with SQLite
 def query_db(query, args=(), one=False):
