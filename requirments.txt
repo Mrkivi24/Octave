@@ -1,5 +1,4 @@
 bcrypt
-atexit
 apscheduler.schedulers.background
 BackgroundScheduler
 signal
