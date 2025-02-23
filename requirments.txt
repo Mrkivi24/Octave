@@ -1,4 +1,3 @@
 bcrypt
-apscheduler.schedulers.background
 BackgroundScheduler
 signal
